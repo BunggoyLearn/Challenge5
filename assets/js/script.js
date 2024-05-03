@@ -9,9 +9,11 @@ myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
 
-const toDo = $('#to-do')
+const toDo = $('#todo-cards')
 const titleDo = $('<h3>')
+const dateDo = $('<h4>')
 const desDo = $('<p>')
+const card = ('.card')
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -31,12 +33,17 @@ function generateTaskId() {
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
-     	
-const $newdiv1 = $( "<div class='to-do'></div>" ),
-newdiv2 = document.createElement( "div" ),
-existingdiv1 = document.getElementById( "todo-cards" );
+    $('<li class=card> </li>').appendto('#todo-cards');
+    $('<li class=card> </li>').appendto("#in-progress-cards");
+    $('<li class=card> </li>').appendto("#done-cards");
 
-$( "body" ).append( $newdiv1, [ newdiv2, existingdiv1 ] );
+    titleDo.text('');
+    dateDo.text('');
+    desDo.text('');
+
+    card.append(titleDo);
+    card.append(dateDo);
+    card.append(desDo);
 }
 
 // Todo: create a function to render the task list and make cards draggable
@@ -56,15 +63,7 @@ function handleDeleteTask(event){
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
-        $( "#draggable" ).draggable();
-        $( "#droppable" ).droppable({
-          drop: function( event, ui ) {
-            $( this )
-              .addClass( "ui-state-highlight" )
-              .find( "p" )
-                .html( "Dropped!" );
-          }
-        });
+
 }
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
