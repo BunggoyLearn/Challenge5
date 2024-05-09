@@ -10,11 +10,9 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Task Board</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -27,6 +25,7 @@
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
     <!-- Todo: Create a modal with a form to add tasks -->
+
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -35,28 +34,28 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id = "task-form">
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Title:</label>
+                <label for="title-of-task" class="col-form-label">Title:</label>
                 <input type="text" class="form-control" id="title-of-task">
               </div>
               <div class="mb-3">
-                <label for="due-date" class="col-form-label">Due Date</label>
-                <p>Date: <input type="text" id="datepicker"></p>
+                <label for="datepicker" class="col-form-label">Due Date</label>
+                <p><input type="text" id="datepicker"></p>
               </div>
               <div class="mb-3">
-                <label for="message-text" class="col-form-label">Insert text</label>
+                <label for="task-text" class="col-form-label">Insert text</label>
                 <textarea class="form-control" id="task-text"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id = "addTask">Add task</button>
               </div>
             </form>    
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add task</button>
-          </div>
         </div>
       </div>
-    </div>
+    </div> 
 
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
@@ -65,11 +64,7 @@
             <h2 class="card-title mb-1">To Do</h2>
           </div>
           <div class="card-body bg-light">
-            <div>
-              <ul id="todo-cards">
-                
-              </ul>
-            </div>
+            <div id="todo-cards"></div>
           </div>
         </div>
       </div>
@@ -79,11 +74,7 @@
             <h2 class="card-title mb-1">In Progress</h2>
           </div>
           <div class="card-body bg-light">
-            <div>
-              <ul id="in-progress-cards">
-                
-              </ul>
-            </div>
+            <div id="in-progress-cards"></div>
           </div>
         </div>
         </div>
@@ -93,11 +84,7 @@
               <h2 class="card-title mb-1">Done</h2>
             </div>
             <div class="card-body bg-light">
-              <div>
-                <ul id="done-cards">
-                
-                </ul>
-              </div>
+              <div id="done-cards"></div>
           </div>
           </div>
       </div>
@@ -111,32 +98,15 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <script src="./assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
   <script>
-    $( function() {
-      $( "#datepicker" ).datepicker();
-    } );
-    </script>
-  <script>
-    $( function() {
-      $( "#draggable" ).draggable();
-    } );
-      </script>
-    <script>
-      $( function() {
-        $( "#draggable" ).draggable();
-        $( "#droppable" ).droppable({
-          drop: function( event, ui ) {
-            $( this )
-              .addClass( "ui-state-highlight" )
-              .find( "p" )
-                .html( "Dropped!" );
-          }
-        });
-      } );
-      </script>
-  <script src="./assets/js/script.js"></script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 </body>
 
 </html>
